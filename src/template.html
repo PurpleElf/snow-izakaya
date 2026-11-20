@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#050810" />
+  <title>雪夜居酒屋</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #03060d; }
+    body {
+      background:
+        radial-gradient(ellipse 82% 74% at 50% 52%, #16233a 0%, #0b1424 39%, #050912 72%, #020409 100%);
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #stage { position: fixed; inset: 0; }
+    canvas { display: block; width: 100%; height: 100%; outline: none; cursor: grab; }
+    canvas:active { cursor: grabbing; }
+    #vignette {
+      position: fixed; inset: 0; pointer-events: none; z-index: 2;
+      background:
+        radial-gradient(ellipse 74% 68% at 50% 48%, transparent 44%, rgba(0,2,8,.18) 72%, rgba(0,1,5,.5) 100%);
+      mix-blend-mode: multiply;
+    }
+    #grain {
+      position: fixed; inset: -50%; pointer-events: none; z-index: 3; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+      animation: grain 1.1s steps(3) infinite;
+    }
+    @keyframes grain {
+      0% { transform: translate3d(0,0,0); }
+      33% { transform: translate3d(-2%,1%,0); }
+      66% { transform: translate3d(1%,-2%,0); }
+      100% { transform: translate3d(0,0,0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="stage"><canvas id="scene"></canvas></div>
+  <div id="vignette"></div>
+  <div id="grain"></div>
+  <script>
+/*__SCENE_BUNDLE__*/
+  </script>
+</body>
+</html>
